@@ -61,3 +61,32 @@ button {
 button:hover {
   background-color: #1a252f;
 }
+
+#listaLancamentos {
+  list-style: none;
+  padding: 0;
+}
+
+#listaLancamentos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.valor-receita {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.valor-despesa {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.acoes button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+}

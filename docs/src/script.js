@@ -1,13 +1,13 @@
-// Pega os lançamentos já salvos no navegador, ou começa com lista vazia
 let lancamentos = JSON.parse(localStorage.getItem("lancamentos")) || [];
 
 const form = document.getElementById("formLancamento");
+const listaEl = document.getElementById("listaLancamentos");
 
 form.addEventListener("submit", function (evento) {
-  evento.preventDefault(); // impede a página de recarregar ao enviar o form
+  evento.preventDefault();
 
   const novoLancamento = {
-    id: Date.now(), // usa a data/hora atual como identificador único
+    id: Date.now(),
     descricao: document.getElementById("descricao").value,
     valor: parseFloat(document.getElementById("valor").value),
     data: document.getElementById("data").value,
@@ -25,9 +25,56 @@ function salvarLancamentos() {
   localStorage.setItem("lancamentos", JSON.stringify(lancamentos));
 }
 
+function excluirLancamento(id) {
+  lancamentos = lancamentos.filter((l) => l.id !== id);
+  salvarLancamentos();
+  atualizarTela();
+}
+
+function formatarMoeda(valor) {
+  return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+function renderizarLista() {
+  listaEl.innerHTML = "";
+
+  lancamentos.forEach((l) => {
+    const item = document.createElement("li");
+
+    const classeValor = l.tipo === "receita" ? "valor-receita" : "valor-despesa";
+    const sinal = l.tipo === "receita" ? "+" : "-";
+
+    item.innerHTML = `
+      <span>${l.descricao} (${l.categoria}) — ${l.data}</span>
+      <span class="${classeValor}">${sinal} ${formatarMoeda(l.valor)}</span>
+      <span class="acoes">
+        <button onclick="excluirLancamento(${l.id})">Excluir</button>
+      </span>
+    `;
+
+    listaEl.appendChild(item);
+  });
+}
+
+function calcularResumo() {
+  const totalReceitas = lancamentos
+    .filter((l) => l.tipo === "receita")
+    .reduce((soma, l) => soma + l.valor, 0);
+
+  const totalDespesas = lancamentos
+    .filter((l) => l.tipo === "despesa")
+    .reduce((soma, l) => soma + l.valor, 0);
+
+  const saldo = totalReceitas - totalDespesas;
+
+  document.getElementById("totalReceitas").textContent = formatarMoeda(totalReceitas);
+  document.getElementById("totalDespesas").textContent = formatarMoeda(totalDespesas);
+  document.getElementById("saldo").textContent = formatarMoeda(saldo);
+}
+
 function atualizarTela() {
-  console.log("Lançamentos salvos:", lancamentos);
-  // a lista e o resumo visual vêm no próximo passo
+  renderizarLista();
+  calcularResumo();
 }
 
 atualizarTela();
