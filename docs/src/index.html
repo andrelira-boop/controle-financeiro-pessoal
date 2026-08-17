@@ -20,9 +20,41 @@
     </section>
 
     <section class="formulario">
-      <h2>Novo Lançamento</h2>
-      <p>(formulário vem no próximo passo)</p>
-    </section>
+  <h2>Novo Lançamento</h2>
+  <form id="formLancamento">
+    <label>Descrição:
+      <input type="text" id="descricao" required>
+    </label>
+
+    <label>Valor (R$):
+      <input type="number" id="valor" step="0.01" required>
+    </label>
+
+    <label>Data:
+      <input type="date" id="data" required>
+    </label>
+
+    <label>Categoria:
+      <select id="categoria" required>
+        <option value="Alimentação">Alimentação</option>
+        <option value="Transporte">Transporte</option>
+        <option value="Moradia">Moradia</option>
+        <option value="Lazer">Lazer</option>
+        <option value="Salário">Salário</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </label>
+
+    <label>Tipo:
+      <select id="tipo" required>
+        <option value="receita">Receita</option>
+        <option value="despesa">Despesa</option>
+      </select>
+    </label>
+
+    <button type="submit">Adicionar</button>
+  </form>
+</section>
 
     <section class="lista">
       <h2>Lançamentos</h2>
