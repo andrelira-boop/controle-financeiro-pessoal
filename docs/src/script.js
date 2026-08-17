@@ -5,6 +5,22 @@ const form = document.getElementById("formLancamento");
 const listaEl = document.getElementById("listaLancamentos");
 const botaoSubmit = form.querySelector("button[type='submit']");
 
+const filtroCategoria = document.getElementById("filtroCategoria");
+const filtroDataInicio = document.getElementById("filtroDataInicio");
+const filtroDataFim = document.getElementById("filtroDataFim");
+const botaoLimparFiltros = document.getElementById("limparFiltros");
+
+[filtroCategoria, filtroDataInicio, filtroDataFim].forEach((campo) => {
+  campo.addEventListener("change", renderizarLista);
+});
+
+botaoLimparFiltros.addEventListener("click", function () {
+  filtroCategoria.value = "";
+  filtroDataInicio.value = "";
+  filtroDataFim.value = "";
+  renderizarLista();
+});
+
 form.addEventListener("submit", function (evento) {
   evento.preventDefault();
 
@@ -65,10 +81,21 @@ function formatarMoeda(valor) {
   return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
+function aplicarFiltros(lista) {
+  return lista.filter((l) => {
+    const bateCategoria = !filtroCategoria.value || l.categoria === filtroCategoria.value;
+    const bateInicio = !filtroDataInicio.value || l.data >= filtroDataInicio.value;
+    const bateFim = !filtroDataFim.value || l.data <= filtroDataFim.value;
+    return bateCategoria && bateInicio && bateFim;
+  });
+}
+
 function renderizarLista() {
   listaEl.innerHTML = "";
 
-  lancamentos.forEach((l) => {
+  const lancamentosFiltrados = aplicarFiltros(lancamentos);
+
+  lancamentosFiltrados.forEach((l) => {
     const item = document.createElement("li");
 
     const classeValor = l.tipo === "receita" ? "valor-receita" : "valor-despesa";

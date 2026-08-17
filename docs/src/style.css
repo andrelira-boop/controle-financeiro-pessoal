@@ -90,3 +90,21 @@ button:hover {
   padding: 0.25rem 0.5rem;
   font-size: 0.85rem;
 }
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.filtros label {
+  font-size: 0.85rem;
+}
+
+.filtros button {
+  height: fit-content;
+}

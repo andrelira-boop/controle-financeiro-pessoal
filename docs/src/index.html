@@ -58,6 +58,29 @@
 
     <section class="lista">
   <h2>Lançamentos</h2>
+  <div class="filtros">
+  <label>Categoria:
+    <select id="filtroCategoria">
+      <option value="">Todas</option>
+      <option value="Alimentação">Alimentação</option>
+      <option value="Transporte">Transporte</option>
+      <option value="Moradia">Moradia</option>
+      <option value="Lazer">Lazer</option>
+      <option value="Salário">Salário</option>
+      <option value="Outros">Outros</option>
+    </select>
+  </label>
+
+  <label>De:
+    <input type="date" id="filtroDataInicio">
+  </label>
+
+  <label>Até:
+    <input type="date" id="filtroDataFim">
+  </label>
+
+  <button type="button" id="limparFiltros">Limpar filtros</button>
+</div>
   <ul id="listaLancamentos"></ul>
 </section>
 
