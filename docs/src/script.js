@@ -4,6 +4,7 @@ let editandoId = null; // guarda o id do lançamento sendo editado, ou null se f
 const form = document.getElementById("formLancamento");
 const listaEl = document.getElementById("listaLancamentos");
 const botaoSubmit = form.querySelector("button[type='submit']");
+const usuarioInfoEl = document.getElementById("usuarioInfo");
 
 const filtroCategoria = document.getElementById("filtroCategoria");
 const filtroDataInicio = document.getElementById("filtroDataInicio");
@@ -33,11 +34,9 @@ form.addEventListener("submit", function (evento) {
   };
 
   if (editandoId === null) {
-    // nenhum id sendo editado = é um lançamento novo
     const novoLancamento = { id: Date.now(), ...dadosFormulario };
     lancamentos.push(novoLancamento);
   } else {
-    // existe um id em edição = atualiza o lançamento existente, mantendo o mesmo id
     lancamentos = lancamentos.map((l) =>
       l.id === editandoId ? { id: editandoId, ...dadosFormulario } : l
     );
@@ -64,7 +63,6 @@ function editarLancamento(id) {
   const lancamento = lancamentos.find((l) => l.id === id);
   if (!lancamento) return;
 
-  // preenche o formulário com os dados do lançamento clicado
   document.getElementById("descricao").value = lancamento.descricao;
   document.getElementById("valor").value = lancamento.valor;
   document.getElementById("data").value = lancamento.data;
@@ -135,4 +133,32 @@ function atualizarTela() {
   calcularResumo();
 }
 
+function renderizarUsuario() {
+  const nome = localStorage.getItem("usuarioNome");
+
+  if (nome) {
+    usuarioInfoEl.innerHTML = `<p>Olá, ${nome}! <button onclick="trocarUsuario()">Trocar nome</button></p>`;
+  } else {
+    usuarioInfoEl.innerHTML = `
+      <form id="formUsuario">
+        <input type="text" id="inputNomeUsuario" placeholder="Digite seu nome" required>
+        <button type="submit">Salvar</button>
+      </form>
+    `;
+
+    document.getElementById("formUsuario").addEventListener("submit", function (evento) {
+      evento.preventDefault();
+      const nomeDigitado = document.getElementById("inputNomeUsuario").value;
+      localStorage.setItem("usuarioNome", nomeDigitado);
+      renderizarUsuario();
+    });
+  }
+}
+
+function trocarUsuario() {
+  localStorage.removeItem("usuarioNome");
+  renderizarUsuario();
+}
+
 atualizarTela();
+renderizarUsuario();

@@ -9,6 +9,7 @@
 <body>
   <header>
     <h1>Controle Financeiro Pessoal</h1>
+    <div id="usuarioInfo"></div>
   </header>
 
   <main>
@@ -20,69 +21,72 @@
     </section>
 
     <section class="formulario">
-  <h2>Novo Lançamento</h2>
-  <form id="formLancamento">
-    <label>Descrição:
-      <input type="text" id="descricao" required>
-    </label>
+      <h2>Novo Lançamento</h2>
+      <form id="formLancamento">
+        <label>Descrição:
+          <input type="text" id="descricao" required>
+        </label>
 
-    <label>Valor (R$):
-      <input type="number" id="valor" step="0.01" required>
-    </label>
+        <label>Valor (R$):
+          <input type="number" id="valor" step="0.01" required>
+        </label>
 
-    <label>Data:
-      <input type="date" id="data" required>
-    </label>
+        <label>Data:
+          <input type="date" id="data" required>
+        </label>
 
-    <label>Categoria:
-      <select id="categoria" required>
-        <option value="Alimentação">Alimentação</option>
-        <option value="Transporte">Transporte</option>
-        <option value="Moradia">Moradia</option>
-        <option value="Lazer">Lazer</option>
-        <option value="Salário">Salário</option>
-        <option value="Outros">Outros</option>
-      </select>
-    </label>
+        <label>Categoria:
+          <select id="categoria" required>
+            <option value="Alimentação">Alimentação</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Moradia">Moradia</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Salário">Salário</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </label>
 
-    <label>Tipo:
-      <select id="tipo" required>
-        <option value="receita">Receita</option>
-        <option value="despesa">Despesa</option>
-      </select>
-    </label>
+        <label>Tipo:
+          <select id="tipo" required>
+            <option value="receita">Receita</option>
+            <option value="despesa">Despesa</option>
+          </select>
+        </label>
 
-    <button type="submit">Adicionar</button>
-  </form>
-</section>
+        <button type="submit">Adicionar</button>
+      </form>
+    </section>
 
     <section class="lista">
-  <h2>Lançamentos</h2>
-  <div class="filtros">
-  <label>Categoria:
-    <select id="filtroCategoria">
-      <option value="">Todas</option>
-      <option value="Alimentação">Alimentação</option>
-      <option value="Transporte">Transporte</option>
-      <option value="Moradia">Moradia</option>
-      <option value="Lazer">Lazer</option>
-      <option value="Salário">Salário</option>
-      <option value="Outros">Outros</option>
-    </select>
-  </label>
+      <h2>Lançamentos</h2>
 
-  <label>De:
-    <input type="date" id="filtroDataInicio">
-  </label>
+      <div class="filtros">
+        <label>Categoria:
+          <select id="filtroCategoria">
+            <option value="">Todas</option>
+            <option value="Alimentação">Alimentação</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Moradia">Moradia</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Salário">Salário</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </label>
 
-  <label>Até:
-    <input type="date" id="filtroDataFim">
-  </label>
+        <label>De:
+          <input type="date" id="filtroDataInicio">
+        </label>
 
-  <button type="button" id="limparFiltros">Limpar filtros</button>
-</div>
-  <ul id="listaLancamentos"></ul>
-</section>
+        <label>Até:
+          <input type="date" id="filtroDataFim">
+        </label>
+
+        <button type="button" id="limparFiltros">Limpar filtros</button>
+      </div>
+
+      <ul id="listaLancamentos"></ul>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
