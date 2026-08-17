@@ -21,5 +21,8 @@ pessoal.
 - Exibir um resumo mensal de entradas e saídas
 - Disponibilizar visualização gráfica dos gastos por categoria
 
+## link trello
+https://trello.com/invite/b/6a82570ed5c5a906ccb95201/ATTI7e30fc64d53b8e8f11e650c95ade85f81B519F9B/controle-financeiro-pessoal-projeto-integrador-ii
+
 ## Equipe
 - André Luis (projeto individual)
