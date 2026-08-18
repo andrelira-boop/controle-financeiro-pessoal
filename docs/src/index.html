@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Controle Financeiro Pessoal</title>
+  <title>Controle Financeiro Pessoal Estudantil</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header>
     <h1>Controle Financeiro Pessoal</h1>
@@ -37,11 +39,13 @@
 
         <label>Categoria:
           <select id="categoria" required>
+            <option value="Bolsa">Bolsa</option>
+            <option value="Auxílio">Auxílio</option>
             <option value="Alimentação">Alimentação</option>
             <option value="Transporte">Transporte</option>
+            <option value="Material Escolar">Material Escolar</option>
             <option value="Moradia">Moradia</option>
             <option value="Lazer">Lazer</option>
-            <option value="Salário">Salário</option>
             <option value="Outros">Outros</option>
           </select>
         </label>
@@ -63,13 +67,15 @@
       <div class="filtros">
         <label>Categoria:
           <select id="filtroCategoria">
-            <option value="">Todas</option>
+            <option value="Bolsa">Bolsa</option>
+            <option value="Auxílio">Auxílio</option>
             <option value="Alimentação">Alimentação</option>
             <option value="Transporte">Transporte</option>
+            <option value="Material Escolar">Material Escolar</option>
             <option value="Moradia">Moradia</option>
             <option value="Lazer">Lazer</option>
-            <option value="Salário">Salário</option>
             <option value="Outros">Outros</option>
+          </select>
           </select>
         </label>
 
@@ -90,4 +96,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
