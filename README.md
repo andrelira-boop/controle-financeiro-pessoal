@@ -1,28 +1,28 @@
-# controle-financeiro-pessoal
-
 ## Introdução
-Sistema web para auxiliar no controle de receitas e despesas pessoais,
-permitindo o registro, categorização e visualização de um resumo
-financeiro mensal.
+Sistema web para auxiliar estudantes na organização financeira pessoal
+e no planejamento do uso de bolsas e auxílios recebidos durante o
+período letivo, permitindo o registro, categorização e visualização
+de um resumo financeiro mensal.
 
 ## Justificativa
-Grande parte das pessoas não possui uma visão clara de suas finanças,
-o que dificulta o planejamento e leva a gastos descontrolados. Este
-projeto busca oferecer uma ferramenta simples e acessível para
-organização financeira pessoal.
+Muitos estudantes, especialmente bolsistas, recebem valores fixos de
+bolsas e auxílios, mas têm dificuldade de planejar como esses recursos
+serão usados ao longo do mês, misturando-os com despesas do dia a dia
+sem controle. Isso leva a desorganização financeira justamente num
+momento em que o planejamento é essencial para a permanência escolar.
+Este projeto busca oferecer uma ferramenta simples e acessível para
+que estudantes organizem suas receitas (incluindo bolsas e auxílios)
+e despesas, com uma visão clara do próprio orçamento.
 
 ## Objetivos
-**Objetivo geral:** desenvolver um sistema web de controle financeiro
-pessoal.
+**Objetivo geral:** desenvolver um sistema web de organização
+financeira e planejamento estudantil, com foco em bolsas e auxílios
+escolares.
 
 **Objetivos específicos:**
-- Permitir o cadastro de receitas e despesas
+- Permitir o cadastro de receitas, incluindo bolsas e auxílios recebidos
+- Permitir o cadastro de despesas relevantes ao contexto estudantil (material escolar, transporte, alimentação, etc.)
 - Organizar lançamentos por categoria
 - Exibir um resumo mensal de entradas e saídas
 - Disponibilizar visualização gráfica dos gastos por categoria
-
-## link trello
-https://trello.com/invite/b/6a82570ed5c5a906ccb95201/ATTI7e30fc64d53b8e8f11e650c95ade85f81B519F9B/controle-financeiro-pessoal-projeto-integrador-ii
-
-## Equipe
-- André Luis (projeto individual)
+- Ajudar o estudante a planejar o uso de bolsas/auxílios ao longo do período letivo
