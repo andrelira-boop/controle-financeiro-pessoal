@@ -14,3 +14,7 @@
 - RNF02: Os dados devem ser armazenados localmente no navegador, utilizando a API localStorage.
 - RNF03: As operações principais devem responder em até 2 segundos.
 - RNF04: Por não haver backend/servidor nesta versão, não há autenticação real nem armazenamento de senhas.
+
+> **Nota:** o escopo do projeto foi ajustado, a pedido do professor, para
+> tratar especificamente de organização financeira e planejamento
+> estudantil, com foco em bolsas e auxílios escolares.
