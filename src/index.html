@@ -5,95 +5,167 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Controle Financeiro Pessoal Estudantil</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header>
-    <h1>Controle Financeiro Pessoal Estudantil</h1>
+  <header class="text-white text-center py-4 mb-4">
+    <h1 class="h3 mb-2"><i class="bi bi-piggy-bank-fill me-2"></i>Controle Financeiro Pessoal Estudantil</h1>
     <div id="usuarioInfo"></div>
   </header>
 
-  <main>
-    <section class="resumo">
-      <h2>Resumo do Mês</h2>
-      <p>Receitas: <span id="totalReceitas">R$ 0,00</span></p>
-      <p>Despesas: <span id="totalDespesas">R$ 0,00</span></p>
-      <p>Saldo: <span id="saldo">R$ 0,00</span></p>
+  <div class="container">
+
+    <!-- Tela de identificação (login/cadastro simples — ver aviso no script.js) -->
+    <section id="telaIdentificacao">
+      <div class="card shadow-sm mx-auto" style="max-width: 420px;">
+        <div class="card-body text-center">
+          <div class="icone-resumo icone-saldo mx-auto mb-3 icone-grande">
+            <i class="bi bi-wallet2"></i>
+          </div>
+          <h2 class="h4 mb-3">Bem-vindo!</h2>
+          <p class="text-muted small">
+            Digite um nome e uma senha. Se for a primeira vez, sua conta é criada
+            automaticamente; se já usou esse nome antes, digite a mesma senha de antes.
+          </p>
+          <form id="formIdentificacao" novalidate class="text-start">
+            <div class="mb-3">
+              <label for="inputNomeUsuario" class="form-label">Nome</label>
+              <input type="text" id="inputNomeUsuario" class="form-control" placeholder="Seu nome">
+              <div class="invalid-feedback" id="erroNome"></div>
+            </div>
+            <div class="mb-3">
+              <label for="inputSenhaUsuario" class="form-label">Senha</label>
+              <input type="password" id="inputSenhaUsuario" class="form-control" placeholder="Mínimo 4 caracteres">
+              <div class="invalid-feedback" id="erroSenha"></div>
+            </div>
+            <div id="erroLogin" class="alert alert-danger py-2 d-none" role="alert"></div>
+            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+          </form>
+        </div>
+      </div>
     </section>
 
-    <section class="formulario">
-      <h2>Novo Lançamento</h2>
-      <form id="formLancamento">
-        <label>Descrição:
-          <input type="text" id="descricao" required>
-        </label>
+    <!-- App principal, só aparece depois de entrar -->
+    <main id="app" class="escondido">
 
-        <label>Valor (R$):
-          <input type="number" id="valor" step="0.01" required>
-        </label>
-
-        <label>Data:
-          <input type="date" id="data" required>
-        </label>
-
-        <label>Categoria:
-          <select id="categoria" required>
-            <option value="Bolsa">Bolsa</option>
-            <option value="Auxílio">Auxílio</option>
-            <option value="Alimentação">Alimentação</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Material Escolar">Material Escolar</option>
-            <option value="Moradia">Moradia</option>
-            <option value="Lazer">Lazer</option>
-            <option value="Outros">Outros</option>
-          </select>
-        </label>
-
-        <label>Tipo:
-          <select id="tipo" required>
-            <option value="receita">Receita</option>
-            <option value="despesa">Despesa</option>
-          </select>
-        </label>
-
-        <button type="submit">Adicionar</button>
-      </form>
-    </section>
-
-    <section class="lista">
-      <h2>Lançamentos</h2>
-
-      <div class="filtros">
-        <label>Categoria:
-          <select id="filtroCategoria">
-            <option value="Bolsa">Bolsa</option>
-            <option value="Auxílio">Auxílio</option>
-            <option value="Alimentação">Alimentação</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Material Escolar">Material Escolar</option>
-            <option value="Moradia">Moradia</option>
-            <option value="Lazer">Lazer</option>
-            <option value="Outros">Outros</option>
-          </select>
-          </select>
-        </label>
-
-        <label>De:
-          <input type="date" id="filtroDataInicio">
-        </label>
-
-        <label>Até:
-          <input type="date" id="filtroDataFim">
-        </label>
-
-        <button type="button" id="limparFiltros">Limpar filtros</button>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h2 class="h5 card-title mb-3">Resumo Geral</h2>
+          <div class="row text-center g-3">
+            <div class="col-4">
+              <div class="icone-resumo icone-receita mx-auto mb-2"><i class="bi bi-cash-stack"></i></div>
+              <div class="text-muted small">Receitas</div>
+              <div class="fs-5 fw-bold text-success" id="totalReceitas">R$ 0,00</div>
+            </div>
+            <div class="col-4">
+              <div class="icone-resumo icone-despesa mx-auto mb-2"><i class="bi bi-cart-dash"></i></div>
+              <div class="text-muted small">Despesas</div>
+              <div class="fs-5 fw-bold text-danger" id="totalDespesas">R$ 0,00</div>
+            </div>
+            <div class="col-4">
+              <div class="icone-resumo icone-saldo mx-auto mb-2"><i class="bi bi-wallet2"></i></div>
+              <div class="text-muted small">Saldo</div>
+              <div class="fs-5 fw-bold" id="saldo">R$ 0,00</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <ul id="listaLancamentos"></ul>
-    </section>
-  </main>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h2 class="h5 card-title">Gastos por Categoria</h2>
+          <canvas id="graficoCategorias" height="220"></canvas>
+          <p id="semDespesas" class="text-muted text-center mt-3 mb-0 d-none">
+            Ainda não há despesas cadastradas pra mostrar aqui.
+          </p>
+        </div>
+      </div>
 
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h2 class="h5 card-title mb-3">Novo Lançamento</h2>
+          <form id="formLancamento">
+
+            <div class="mb-3">
+              <label for="tipo" class="form-label">1. Isso foi uma Receita ou uma Despesa?</label>
+              <select id="tipo" class="form-select" required>
+                <option value="" selected disabled>Selecione...</option>
+                <option value="receita">Receita (dinheiro que entrou)</option>
+                <option value="despesa">Despesa (dinheiro que saiu)</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="categoria" class="form-label">2. Categoria</label>
+              <input type="text" id="categoria" class="form-control" list="listaCategorias"
+                placeholder="Escolha da lista ou digite a sua" autocomplete="off" required>
+              <datalist id="listaCategorias"></datalist>
+              <div class="form-text">Escolha uma sugestão ou digite uma categoria diferente, se preferir.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="descricao" class="form-label">3. Descrição</label>
+              <input type="text" id="descricao" class="form-control"
+                placeholder='Ex: "Almoço no RU" ou "Bolsa PIBIC de setembro"' required>
+              <div class="form-text">Um resumo curto pra você lembrar depois do que foi esse lançamento.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="valor" class="form-label">4. Valor (R$)</label>
+              <input type="number" id="valor" class="form-control" step="0.01" min="0" placeholder="Ex: 25.50" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="data" class="form-label">5. Data</label>
+              <input type="date" id="data" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Adicionar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h2 class="h5 card-title mb-3">Lançamentos</h2>
+
+          <div class="row g-2 align-items-end mb-3">
+            <div class="col-12 col-md-4">
+              <label for="filtroCategoria" class="form-label small">Filtrar por categoria</label>
+              <input type="text" id="filtroCategoria" class="form-control form-control-sm" list="listaCategoriasFiltro"
+                placeholder="Todas" autocomplete="off">
+              <datalist id="listaCategoriasFiltro"></datalist>
+            </div>
+            <div class="col-6 col-md-3">
+              <label for="filtroDataInicio" class="form-label small">De</label>
+              <input type="date" id="filtroDataInicio" class="form-control form-control-sm">
+            </div>
+            <div class="col-6 col-md-3">
+              <label for="filtroDataFim" class="form-label small">Até</label>
+              <input type="date" id="filtroDataFim" class="form-control form-control-sm">
+            </div>
+            <div class="col-12 col-md-2">
+              <button type="button" id="limparFiltros" class="btn btn-outline-secondary btn-sm w-100">Limpar</button>
+            </div>
+          </div>
+
+          <ul id="listaLancamentos" class="list-group"></ul>
+          <p id="semLancamentos" class="text-muted text-center mt-3 mb-0 d-none">
+            Nenhum lançamento encontrado.
+          </p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 
