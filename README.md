@@ -26,3 +26,56 @@ escolares.
 - Exibir um resumo mensal de entradas e saídas
 - Disponibilizar visualização gráfica dos gastos por categoria
 - Ajudar o estudante a planejar o uso de bolsas/auxílios ao longo do período letivo
+
+## Funcionalidades
+
+- Identificação de usuário por nome e senha (RF01), com contas separadas por navegador
+- Cadastro de receitas e despesas, com categorias sugeridas de acordo com o tipo escolhido (RF02, RF03)
+- Edição e exclusão de lançamentos (RF04)
+- Resumo mensal com totais de receitas, despesas e saldo (RF05)
+- Filtro de lançamentos por categoria e por período (RF06)
+- Gráfico de gastos por categoria (RF07)
+- Layout responsivo, adaptado para desktop e mobile (RNF01)
+
+## Como executar
+
+Este projeto é 100% front-end (HTML, CSS e JavaScript), sem necessidade de
+servidor ou instalação de dependências.
+
+1. Clone ou baixe este repositório.
+2. Abra o arquivo `src/index.html` diretamente no navegador (duplo clique,
+   ou clique com o botão direito → "Abrir com" → seu navegador preferido).
+   Também funciona com extensões como "Live Server" do VS Code.
+3. Na primeira vez, digite um nome e uma senha (mínimo 4 caracteres) — a
+   conta é criada automaticamente. Nos acessos seguintes, use o mesmo nome
+   e senha para entrar.
+
+> ⚠️ Aviso: a senha é salva em texto puro no `localStorage` do navegador,
+> sem criptografia. Isso é apenas uma simulação didática de contas
+> separadas por usuário, **não** uma autenticação segura (ver RNF04 em
+> `docs/requisitos.md`).
+
+## Tecnologias utilizadas
+
+- HTML5, CSS3 e JavaScript puro (Vanilla JS)
+- [Bootstrap 5](https://getbootstrap.com/) — layout e responsividade
+- [Bootstrap Icons](https://icons.getbootstrap.com/) — ícones
+- [Chart.js](https://www.chartjs.org/) — gráfico de gastos por categoria
+- `localStorage` da API do navegador — persistência dos dados
+
+## Estrutura do repositório
+
+```
+├── src/                 # código-fonte do sistema
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+├── docs/
+│   ├── requisitos.md    # requisitos funcionais e não funcionais
+│   ├── arquitetura.md   # modelagem (diagrama ER e fluxo principal)
+│   └── testes.md        # relatório de validação e testes
+└── README.md
+```
+
+## Resultados finais (v1.0.0)
+falta preencher ainda
