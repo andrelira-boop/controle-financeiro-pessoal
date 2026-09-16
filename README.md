@@ -78,4 +78,12 @@ servidor ou instalação de dependências.
 ```
 
 ## Resultados finais (v1.0.0)
-falta preencher ainda
+O projeto foi concluído com todos os requisitos funcionais (RF01 a RF07) e
+não funcionais (RNF01 a RNF04) implementados e testados (ver `docs/testes.md`).
+O sistema permite cadastrar receitas e despesas, visualizar o saldo em um
+resumo e acompanhar os gastos por categoria em um gráfico.
+
+A validação com um usuário real não identificou dificuldades relevantes.
+Como limitação conhecida, a senha do login é salva sem criptografia no
+`localStorage`, servindo apenas para separar dados por usuário no mesmo
+navegador — não é uma autenticação segura.
